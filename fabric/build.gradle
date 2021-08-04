@@ -37,6 +37,10 @@ repositories {
         name = "FTB"
         url = "https://maven.saps.dev/minecraft"
     }
+    maven {
+        name = "CurseMaven"
+        url "https://www.cursemaven.com"
+    }
 }
 
 dependencies {
@@ -62,7 +66,9 @@ dependencies {
         transitive = false
     }
 
-    modImplementation("dev.ftb.mods:ftb-ranks-fabric:1605.1.2-build.17")
+    modImplementation "dev.ftb.mods:ftb-ranks-fabric:${rootProject.ftb_ranks}"
+
+    modImplementation rootProject.dynmap_fabric
 }
 
 processResources {

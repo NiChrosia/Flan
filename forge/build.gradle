@@ -41,8 +41,9 @@ dependencies {
         transitive = false
     }
 
-    modImplementation("dev.ftb.mods:ftb-ranks-forge:${ftb_ranks}")
-    modImplementation(dicemcmm)
+    modImplementation("dev.ftb.mods:ftb-ranks-forge:${rootProject.ftb_ranks}")
+    modImplementation dicemcmm
+    modImplementation rootProject.dynmap_forge
 }
 
 processResources {

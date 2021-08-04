@@ -13,6 +13,7 @@ import io.github.flemmli97.flan.api.permission.ClaimPermission;
 import io.github.flemmli97.flan.api.permission.PermissionRegistry;
 import io.github.flemmli97.flan.config.Config;
 import io.github.flemmli97.flan.config.ConfigHandler;
+import io.github.flemmli97.flan.integration.dynmap.DynmapHandler;
 import io.github.flemmli97.flan.player.PlayerClaimData;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -137,6 +138,7 @@ public class Claim implements IPermissionContainer {
 
     public void setClaimName(String name) {
         this.claimName = name;
+        DynmapHandler.updateDynmap(this, DynmapHandler.Type.NAME);
         this.setDirty(true);
     }
 

@@ -14,6 +14,7 @@ import io.github.flemmli97.flan.api.data.IPlayerData;
 import io.github.flemmli97.flan.api.permission.ClaimPermission;
 import io.github.flemmli97.flan.api.permission.PermissionRegistry;
 import io.github.flemmli97.flan.config.ConfigHandler;
+import io.github.flemmli97.flan.integration.dynmap.DynmapHandler;
 import io.github.flemmli97.flan.player.EnumDisplayType;
 import io.github.flemmli97.flan.player.EnumEditMode;
 import io.github.flemmli97.flan.player.OfflinePlayerData;
@@ -147,6 +148,7 @@ public class ClaimStorage implements IPermissionStorage {
             claim.remove();
             claim.getOwnerPlayer().ifPresent(o -> PlayerClaimData.get(o).updateScoreboard());
         }
+        DynmapHandler.updateDynmap(claim, DynmapHandler.Type.REMOVE);
         return this.claimUUIDMap.remove(claim.getClaimID()) != null;
     }
 
@@ -236,6 +238,7 @@ public class ClaimStorage implements IPermissionStorage {
             old.add(claim);
             return old;
         });
+        DynmapHandler.updateDynmap(claim, DynmapHandler.Type.ADD);
     }
 
     public boolean transferOwner(Claim claim, ServerPlayerEntity player, UUID newOwner) {
@@ -253,6 +256,7 @@ public class ClaimStorage implements IPermissionStorage {
             return old;
         });
         this.dirty.add(claim.getOwner());
+        DynmapHandler.updateDynmap(claim, DynmapHandler.Type.OWNER);
         return true;
     }
 

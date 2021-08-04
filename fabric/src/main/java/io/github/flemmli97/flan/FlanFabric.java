@@ -6,6 +6,7 @@ import io.github.flemmli97.flan.config.ConfigHandler;
 import io.github.flemmli97.flan.event.BlockInteractEvents;
 import io.github.flemmli97.flan.event.EntityInteractEvents;
 import io.github.flemmli97.flan.event.ItemInteractEvents;
+import io.github.flemmli97.flan.integration.dynmap.fabric.DynmapIntegrationImpl;
 import io.github.flemmli97.flan.integration.playerability.PlayerAbilityEvents;
 import io.github.flemmli97.flan.player.PlayerDataHandler;
 import io.github.flemmli97.flan.scoreboard.ClaimCriterias;
@@ -40,6 +41,9 @@ public class FlanFabric implements ModInitializer {
         Flan.ftbRanks = FabricLoader.getInstance().isModLoaded("ftbranks");
         if (Flan.playerAbilityLib)
             PlayerAbilityEvents.register();
+        if (FabricLoader.getInstance().isModLoaded("dynmap"))
+            DynmapIntegrationImpl.reg();
+
         ClaimCriterias.init();
     }
 

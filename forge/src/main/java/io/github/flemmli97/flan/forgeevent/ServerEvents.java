@@ -6,6 +6,7 @@ import io.github.flemmli97.flan.commands.CommandClaim;
 import io.github.flemmli97.flan.config.ConfigHandler;
 import io.github.flemmli97.flan.event.PlayerEvents;
 import io.github.flemmli97.flan.player.PlayerDataHandler;
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.event.server.FMLServerAboutToStartEvent;

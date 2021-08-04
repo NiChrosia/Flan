@@ -5,6 +5,9 @@ import io.github.flemmli97.flan.forgeevent.EntityInteractEventsForge;
 import io.github.flemmli97.flan.forgeevent.ItemInteractEventsForge;
 import io.github.flemmli97.flan.forgeevent.ServerEvents;
 import io.github.flemmli97.flan.forgeevent.WorldEventsForge;
+import io.github.flemmli97.flan.integration.dynmap.DynmapHandler;
+import io.github.flemmli97.flan.integration.dynmap.DynmapIntegration;
+import io.github.flemmli97.flan.integration.dynmap.forge.DynmapIntegrationImpl;
 import io.github.flemmli97.flan.scoreboard.ClaimCriterias;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,6 +22,8 @@ public class FlanForge {
     public FlanForge() {
         Flan.ftbRanks = ModList.get().isLoaded("ftbranks");
         Flan.diceMCMoneySign = ModList.get().isLoaded("dicemcmm");
+        if(ModList.get().isLoaded("dynmap"))
+            DynmapIntegrationImpl.reg();
 
         IEventBus forge = MinecraftForge.EVENT_BUS;
         forge.addListener(WorldEventsForge::modifyExplosion);
